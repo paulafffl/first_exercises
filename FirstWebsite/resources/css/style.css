@@ -13,16 +13,16 @@
 
 .navbar a{
     text-decoration: none;
-    color:#B9E3C6;
+    color: #B9E3C6;
     text-emphasis: bold;
     font-family: 'Courier New', Courier, monospace;
 }
 
-.banner a{
+.sectiontwo a{
     text-decoration: none;
-    color: #23395B;
+    color: #B9E3C6;
     text-emphasis: bold;
-    filter: drop-shadow(1, 1, 1, white);
+
 }
 
 .banner{
@@ -33,7 +33,6 @@
     width: 100%;
     margin-top: 5px;
     font-size: 20px;
-
 }
 
 #picture{
@@ -48,7 +47,6 @@
     padding: 50px 100px;
     width: 100%;
     font-size: 20px;
-
 }
 
 footer{

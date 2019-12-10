@@ -13,6 +13,16 @@ let openDoor1;
 let openDoor2;
 let openDoor3;
 
+let currentlyPlaying = true;
+
+const isBot = (door) => {
+  if (door.src === botDoorPath){
+    return true;
+  } else {
+    return false;
+  }
+}
+
 const isClicked = (door) => {
   if (door.src === closedDoorPath){
     return false;
@@ -21,10 +31,12 @@ const isClicked = (door) => {
   }
 }
 
-const playDoor = () => {
+const playDoor = (door) => {
   numClosedDoors--;
   if (numClosedDoors === 0){
     gameOver("win");
+  } else if (isBot(door)) {
+    gameOver();
   }
 }
 
@@ -46,30 +58,50 @@ randomChoreDoorGenerator = () => {
 }
 
 doorImage1.onclick = () => {
-  if(!isClicked(doorImage1)){
+  if(currentlyPlaying && !isClicked(doorImage1)){
     doorImage1.src = openDoor1;
-    playDoor();
+    playDoor(doorImage1);
   }
 }
 
 doorImage2.onclick = () => {
-  if(!isClicked(doorImage2)){
+  if(currentlyPlaying && !isClicked(doorImage2)){
     doorImage2.src = openDoor2;
-    playDoor();
+    playDoor(doorImage2);
   }
 }
 
 doorImage3.onclick = () => {
-  if(!isClicked(doorImage3)){
+  if(currentlyPlaying && !isClicked(doorImage3)){
     doorImage3.src = openDoor3;
-    playDoor();
+    playDoor(doorImage3);
   }
 }
+
+startButton.onclick = () => {
+  if (currentlyPlaying === false){
+    startRound();
+}
+}
+
+const startRound = () => {
+  door1.src = closedDoorPath;
+  door2.src = closedDoorPath;
+  door3.src = closedDoorPath;
+  numClosedDoors = 3;
+  startButton.innerHTML = "Good luck!";
+  currentlyPlaying = true;
+  randomChoreDoorGenerator();
+}
+
 
 const gameOver = (status) =>{
+  currentlyPlaying = false;
   if (status === "win"){
     startButton.innerHTML = "You win! Play again?";
+  } else {
+    startButton.innerHTML = "Game over! Play again?";
   }
 }
 
-randomChoreDoorGenerator();
+startRound();

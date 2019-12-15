@@ -1,3 +1,9 @@
+const templateElement = document.getElementById("templateHB");
+
+const templateSource = templateElement.innerHTML;
+
+const template = Handlebars.compile(templateSource);
+
 const context = {
     title: 'Welcome to Musicon',
     body: 'Musicon is a budding musical storefront with a mission to share the joy of music. These magnificent auditory tools are designed with musical creators, like you, in mind. Hobbyists, beginners, and experts alike can appreciate the resplendent sounds supplied by each and every instrument we carry. Join us in delivering the euphoric vibrations of melodia to the citizens of the world!',
@@ -31,3 +37,6 @@ const context = {
     ]
   };
   
+const compiledHtml = template(context);
+
+document.getElementById("information").innerHTML = compiledHtml;

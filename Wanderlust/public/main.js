@@ -50,9 +50,15 @@ const getForecast = async () => {
 
 // Render functions
 const renderVenues = (venues) => {
+  let arrayAuxIndex = [];
+  for (let i = 0; i < 10; i++) {
+   arrayAuxIndex.push(i);
+  }
   $venueDivs.forEach(($venue, index) => {
     // Add your code here:
-    const venue = venues[index];
+    let randomIndex = Math.floor(Math.random() * arrayAuxIndex.length);
+    const venue = venues[arrayAuxIndex[randomIndex]];
+    arrayAuxIndex.splice(randomIndex,1);
     const venueIcon = venue.categories[0].icon;
     const venueImgSrc = venueIcon.prefix + 'bg_64' + venueIcon.suffix;
     let venueContent = createVenueHTML(venue.name,venue.location,venueImgSrc)    

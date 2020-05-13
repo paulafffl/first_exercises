@@ -1,2 +1,3 @@
-# Hello Git!
-My first public repository file.
+# First Website
+
+This is my very first public repository file.
